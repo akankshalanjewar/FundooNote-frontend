@@ -1,0 +1,60 @@
+.parentall {
+    width: 35vw;
+    height: 90vh;
+    border: 1px solid grey;
+    border-radius: 10px;
+    margin: auto;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+
+}
+
+.firstmaincon {
+    /* border: 1px solid red; */
+    width: 80%;
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 60px;
+
+}
+
+.google {
+    /* border: 1px solid red; */
+    height: 20%;
+    display: flex;
+    justify-content: center;
+}
+
+.email_textfcon {
+    width: 100%;
+    height: 30%;
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: space-between;
+
+
+}
+
+.forget {
+
+    /* border: 1px solid red; */
+    display: flex;
+    width: 90%;
+    height: 30%;
+
+
+}
+
+.nextbtnCon {
+    /* border: 1px solid red; */
+    height: 10%;
+    display: flex;
+    justify-content: space-between;
+
+}

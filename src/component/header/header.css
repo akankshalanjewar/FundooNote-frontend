@@ -1,0 +1,54 @@
+.header_parent {
+    border: 1px solid lightgray;
+    width: 99vw;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    border-radius: 0.9;
+    /* margin-right: 2rem; */
+    position: fixed;
+    background: white;
+}
+.header_img {
+    width: 20px;
+}
+.header_img1{
+    width: 35px;
+}
+.section_one {
+    /* border: 1px solid red; */
+    display: flex;
+    width: 15%;
+    height: 25px;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.section_two {
+    border: 1px solid gray;
+    width: 55%;
+    height: 60%;
+    display: flex;
+    align-items: center;
+    position: relative;
+    left: 2rem;
+    border-radius: .5rem;
+}
+.section_three {
+    /* border: 1px solid red; */
+    width: 15%;
+    height: 25px;
+    display: flex;
+    justify-content: space-evenly;
+    position: relative;
+    left: 4rem;
+}
+.section_four {
+    /* border: 1px solid red; */
+    width: 10%;
+    height: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    position: relative;
+    left: 5rem;
+}

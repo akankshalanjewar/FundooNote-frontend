@@ -1,0 +1,87 @@
+.takethree_parent {
+    border: 1px solid grey;
+    width: 17vw;
+    height: 22vh;
+    margin: auto;
+    border-radius: 0.4rem;
+    box-shadow: 1px 1px 1px 1px grey;
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+}
+
+
+.tk_one {
+    /* border: 1px solid green; */
+    width: 95%;
+    height: 10%;
+    font-size: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    margin-top: 15px;
+    margin-left: 7px;
+
+}
+
+.pinone {
+    /* border: 1px solid red; */
+    width: 20px;
+    height: 20px;
+}
+
+.tk_two {
+    /* border: 1px solid yellow; */
+    width: 95%;
+    height: 10%;
+    font-size: 15px;
+    display: flex;
+    margin-top: 15px;
+    margin-left: 7px;
+
+}
+
+.tk_three {
+    /* border: 1px solid red; */
+    width: 100%;
+    height: 15%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 37px;
+
+}
+
+.imgs {
+    /* border: 1px solid red; */
+    width: 23px;
+    height: 17px;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.title_class>input {
+    width: 30%;
+    border: none;
+    outline: none;
+    background-color: transparent;
+}
+
+.desc_class>input {
+    width: 30%;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    margin-top: 10px;
+}
+
+.img_cont {
+    /* border: 1px solid blue; */
+    display: flex;
+    height: 20px;
+    justify-content: space-between;
+    border: none;
+    background-color: transparent;
+    outline: none;
+    margin-top: 20px;
+}
