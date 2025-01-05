@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import "./signup.css";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import {signup} from "../../services/userservice";
 import Google from "../../assets/google.png";
 import {Checkbox, FormControlLabel} from "@mui/material";
+import { useHistory } from "react-router-dom";
+
 
 const fnameRegex = /^[A-Z]{1}[a-z]{2,}$/;
 const lnameRegex = /^[A-Z]{1}[a-z]{2,}$/;
@@ -15,14 +16,15 @@ const passwardRegex =
 const confirmRegex =
   /^(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%^&-+=()])([a-zA-Z0-9]*).{8,}$/;
 function SignUp() {
-  const [signUpObject, setSignUpObject] = React.useState({
+    const history = useHistory();
+  const [signUpObject, setSignUpObject] = useState({
     firstName: "",
     lastName: "",
     email: "",
     password: "",
     service: "advance",
   });
-  const [regexObj, setRegexObj] = React.useState({
+  const [regexObj, setRegexObj] = useState({
     fnameBorder: false,
     fnameHelper: " ",
     lnameBorder: false,
@@ -128,14 +130,16 @@ function SignUp() {
       passwardStatus === true &&
       confirmStatus === true
     ) {
-      signup(signUpObject)
-        .then((response) => {
-          console.log(response);
-          localStorage.setItem("token", response.data.id);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+      fetch(`http://localhost:3000/users?firstName=${signUpObject.firstName}&lastname=${signUpObject.lastName}&email=${signUpObject.email}&password=${signUpObject.password}`)
+      .then(data => {
+        console.log(data, "data");
+        if (data) {
+          history.push("/dashboard")
+          console.log("Login successful!", data[0]);
+        } else {
+          console.log("Invalid credentials.");
+        }
+      });
     }
   };
 

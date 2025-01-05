@@ -1,37 +1,21 @@
 import Header from "../../component/header/header";
 import TakeNoteOne from "../../component/takenoteone/takenoteone";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import TakeNoteTwo from "../../component/takenotetwo/takenotetwo";
 import TakeNoteThree from "../../component/takenotethree/takenotethree";
-import {getNotes} from "../../services/dataservice";
 import Drawer1 from "../../component/drawer/drawer";
 
 export default function Dashboard() {
-  const [viewNote, setViewNote] = React.useState(true);
-  const [listOfNote, setListOfNote] = React.useState([]);
-  const [drawer,setDrawer]= React.useState(true)
+  const [viewNote, setViewNote] = useState(true);
+  const [listOfNote, setListOfNote] = useState([]);
+  const [drawer,setDrawer]= useState(true)
   const listenTakeNoteOne = () => {
     setViewNote(false);
   };
   const listenTakeNoteTwo = () => {
     setViewNote(true);
   };
-  const Getnotes = () => {
-    getNotes()
-      .then((response) => {
-        console.log(response);
-        setListOfNote(response.data.data.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-  React.useEffect(() => {
-    Getnotes();
-  }, []);
-  console.log(listOfNote);
   const listenToTakeNoteThree = () => {
-    Getnotes();
   };
 
   const listenHeader = () => {

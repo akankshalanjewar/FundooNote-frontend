@@ -1,10 +1,14 @@
-import React from "react";
-import {Component} from "react";
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import "./signin.css";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import {signin} from "../../services/userservice";
 import Google from "../../assets/google.png";
+
+
+
+
+
 
 const emailRegex =
   /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/;
@@ -12,23 +16,27 @@ const passwordRegex =
   /^(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%^&-+=()])([a-zA-Z0-9]*).{8,}$/;
 
 function SignIn() {
-  const [signInObject, setSignObject] = React.useState({
+  const history = useHistory();
+
+  const [signInObject, setSignObject] = useState({
     email: "",
     password: "",
   });
-  const [regexObj, setRgexObj] = React.useState({
+  const [regexObj, setRgexObj] = useState({
     emailBorder: false,
     emailHelper: "",
     passwordBorder: false,
     passwordHelper: "",
   });
 
+
+
   const takeEmail = (event) => {
-    setSignObject((prevObj) => ({...prevObj, email: event.target.value}));
+    setSignObject((prevObj) => ({ ...prevObj, email: event.target.value }));
   };
 
   const takePassword = (event) => {
-    setSignObject((prevObj) => ({...prevObj, password: event.target.value}));
+    setSignObject((prevObj) => ({ ...prevObj, password: event.target.value }));
   };
 
   const submit = () => {
@@ -63,21 +71,24 @@ function SignIn() {
       }));
     }
     if (emailStatus === true && passwordStatus === true) {
-      signin(signInObject)
-        .then((response) => {
-          console.log(response);
-          localStorage.setItem("token", response.data.id);
-        })
-        .catch((error) => {
-          console.log(error);
+      fetch(`http://localhost:3000/users?email=${signInObject.email}&password=${signInObject.password}`)
+        .then(data => {
+          console.log(data, "data");
+          if (data) {
+            history.push("/dashboard")
+            console.log("Login successful!", data[0]);
+          } else {
+            console.log("Invalid credentials.");
+          }
         });
+     
     }
   };
   return (
     <div class="parentall">
       <div class="firstmaincon">
         <div class="google">
-          <img class="googleimg" src={Google} style={{width: "25%"}} />
+          <img class="googleimg" src={Google} style={{ width: "25%" }} />
         </div>
         <div class="sign_in">sign in</div>
         <div class="useuracc">
@@ -115,7 +126,7 @@ function SignIn() {
           <p>Not your computer? Use Guest mode to sign in privately.</p>
         </div>
         <Button
-          style={{positon: "relative", right: "7.5rem", bottom: "9px"}}
+          style={{ positon: "relative", right: "7.5rem", bottom: "9px" }}
           variant="text"
         >
           Learn More

@@ -1,5 +1,5 @@
 import Box from "@mui/material/Box";
-import React from "react";
+import React, { useState } from "react";
 import "./takenotethree.css";
 import remind from "../../assets/remind me.svg";
 import add from "../../assets/add.svg";
@@ -8,7 +8,6 @@ import archive from "../../assets/archive.svg";
 import more from "../../assets/more.svg";
 import pin from "../../assets/pin.svg";
 import ColorPopper from "../colorpopper/colorpopper";
-import {updateArchive, updateNotes} from "../../services/dataservice";
 import Button from "@mui/material/Button";
 import Modal from "@mui/material/Modal";
 
@@ -24,12 +23,12 @@ const style = {
   p: 4,
 };
 export default function TakeNoteThree(props) {
-  const [editNoteObj, setEditNoteObj] = React.useState({
+  const [editNoteObj, setEditNoteObj] = useState({
     title: "",
     description: "",
     noteId: props.note.id,
   });
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
 
   const handleOpen = (noteObj) => {
     setEditNoteObj({
@@ -55,28 +54,14 @@ export default function TakeNoteThree(props) {
     }));
   };
   const noteUpdate = () => {
-    updateNotes(editNoteObj)
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+   
   };
   const archiveUpdate = () => {
     let obj = {
       noteIdList: [props.note.id],
       isArchived: true,
     };
-    updateArchive(obj)
-      .then((response) => {
-        console.log(obj);
-        console.log(response);
-        props.listenToTakeNoteThree();
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+   
   };
 
   return (

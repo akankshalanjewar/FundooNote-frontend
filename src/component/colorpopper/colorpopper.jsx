@@ -2,8 +2,6 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import Popper from "@mui/material/Popper";
 import color from "../../assets/color.svg";
-import {display} from "@mui/system";
-import {changeColor} from "../../services/dataservice";
 
 export default function ColorPopper(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -36,14 +34,6 @@ export default function ColorPopper(props) {
         noteIdList: [props.id],
         color: color,
       };
-      changeColor(obj)
-        .then((response) => {
-          console.log(response);
-          props.listenToColorUpdate();
-        })
-        .catch((error) => {
-          console.log(error);
-        });
     }
   };
 

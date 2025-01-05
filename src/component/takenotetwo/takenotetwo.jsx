@@ -1,5 +1,4 @@
 import React from "react";
-import {addNote} from "../../services/dataservice";
 import "./takenotetwo.css";
 import pin from "../../assets/pin.svg";
 import remind from "../../assets/remind me.svg";
@@ -34,14 +33,6 @@ export default function TakeNoteTwo(props) {
     setNote((prevState) => ({...prevState, isArchived: true}));
   };
   const submit = () => {
-    addNote(note)
-      .then((response) => {
-        console.log(response);
-        
-      })
-      .catch((error) => {
-        console.log(error);
-      });
       props.listenTakeNoteTwo();
   };
   return (
